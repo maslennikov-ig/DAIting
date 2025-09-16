@@ -451,6 +451,8 @@
         .timeline {
             position: relative;
             padding: 50px 0;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
         .timeline:before {
@@ -465,9 +467,11 @@
         }
 
         .timeline-item {
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 30px;
             align-items: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
             position: relative;
             opacity: 0;
             animation: slideIn 0.6s forwards;
@@ -489,29 +493,36 @@
             }
         }
 
-        .timeline-item:nth-child(even) {
-            flex-direction: row-reverse;
+        .timeline-item:nth-child(odd) .timeline-content:first-child {
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content:first-child {
+            grid-column: 3;
+            text-align: left;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content:last-child {
+            grid-column: 1;
+            text-align: right;
         }
 
         .timeline-content {
-            flex: 1;
             padding: 20px 30px;
             background: white;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            margin: 0 30px;
         }
 
         .timeline-dot {
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
             background: var(--primary);
             border-radius: 50%;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
             border: 4px solid white;
             box-shadow: 0 2px 10px rgba(233, 30, 99, 0.4);
+            z-index: 2;
+            position: relative;
         }
 
         .pricing-cards {
@@ -770,17 +781,18 @@
             }
 
             .timeline-item {
-                flex-direction: column !important;
-                align-items: flex-start;
+                display: block;
+                margin-left: 60px;
+            }
+
+            .timeline-item .timeline-content {
+                text-align: left !important;
             }
 
             .timeline-dot {
-                left: 30px;
-            }
-
-            .timeline-content {
-                margin-left: 60px;
-                margin-right: 0;
+                position: absolute;
+                left: 18px;
+                top: 20px;
             }
         }
 
@@ -1226,7 +1238,6 @@
 
         <div class="timeline">
             <div class="timeline-item">
-                <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <h3>2025 Q1 - Запуск MVP</h3>
                     <p>100 бета-тестеров в Москве. Отработка алгоритмов и сценариев. Первые успешные истории.</p>
@@ -1234,9 +1245,12 @@
                         <div class="progress-fill" style="width: 75%;"></div>
                     </div>
                 </div>
+                <div class="timeline-dot"></div>
+                <div></div>
             </div>
 
             <div class="timeline-item">
+                <div></div>
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <h3>2025 Q3 - Масштабирование</h3>
@@ -1248,7 +1262,6 @@
             </div>
 
             <div class="timeline-item">
-                <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <h3>2026 - Федеральное покрытие</h3>
                     <p>15 городов России. VIP-сегмент. Международные партнерства. Series A раунд.</p>
@@ -1256,9 +1269,12 @@
                         <div class="progress-fill" style="width: 15%;"></div>
                     </div>
                 </div>
+                <div class="timeline-dot"></div>
+                <div></div>
             </div>
 
             <div class="timeline-item">
+                <div></div>
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <h3>2027+ - Глобальная экспансия</h3>
